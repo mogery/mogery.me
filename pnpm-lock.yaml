@@ -2,9 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   handlebars: ^4.7.7
+  marked: ^4.2.12
 
 dependencies:
   handlebars: 4.7.7
+  marked: 4.2.12
 
 packages:
 
@@ -19,6 +21,12 @@ packages:
       wordwrap: 1.0.0
     optionalDependencies:
       uglify-js: 3.17.4
+    dev: false
+
+  /marked/4.2.12:
+    resolution: {integrity: sha512-yr8hSKa3Fv4D3jdZmtMMPghgVt6TWbk86WQaWhDloQjRSQhMMYCAro7jP7VDJrjjdV8pxVxMssXS8B8Y5DZ5aw==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: false
 
   /minimist/1.2.8:

@@ -5,8 +5,10 @@
 }
 
 :root {
+    font-size: 18px;
     --bg: #fff5f0;
     --text: black;
+    --blue: #3355ff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,31 +26,44 @@ html, body {
     background-color: var(--bg);
     color: var(--text);
     border-collapse: collapse;
+    scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 400;
     margin: 0;
+}
+
+img {
+    user-select: none;
+}
+
+p {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
 }
 
 .display {
     font-family: 'Unbounded', sans-serif;
 }
 
-.w-full { width: 100%; }
-.h-full { height: 100%; }
-.flex { display: flex; }
-.p-2 { padding: 0.5rem; }
-.p-4 { padding: 1rem; }
-.mr-2 { margin-right: 0.5rem; }
-.mr-4 { margin-right: 1rem; }
-.font-bold { font-weight: bold; }
 .font-black { font-weight: 900; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.gap-2 { gap: 0.5rem; }
-.gap-4 { gap: 1rem; }
-.centerfix { line-height: 0.5rem; margin-bottom: 2px; }
-.border-b { border-bottom: var(--text) 2px solid; }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
 
 a {
     color: var(--text);
@@ -58,19 +73,31 @@ a {
     width: 100%;
     padding: 0.5rem;
 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
     display: flex;
     align-items: center;
     gap: 1rem;
 
+    background-color: var(--bg);
     border-bottom: var(--text) 2px solid;
 }
 
 #navbar a {
     text-decoration: none;
     padding: 0.175rem 0.5rem calc(0.175rem + 2px);
+
+    transition-property: color background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
 }
 
-#navbar a.display {
+#navbar > a:first-of-type {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
     padding-bottom: 0.175rem;
 }
 
@@ -79,7 +106,7 @@ a {
     color: var(--bg);
 }
 
-#flash {
+.flash {
     width: 100%;
     padding: 0.5rem;
 
@@ -89,8 +116,13 @@ a {
 
     text-decoration: none;
     user-select: none;
-    background-color: #3355ff;
+    background-color: var(--blue);
     color: white;
     border-bottom: var(--text) 2px solid;
     text-align: center;
+}
+
+.scrollmark {
+    position: relative;
+    top: -49.281px;
 }

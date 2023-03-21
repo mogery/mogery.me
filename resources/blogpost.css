@@ -1,0 +1,92 @@
+.header h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-variation-settings: "wdth" 125;
+    font-size: 5.625vw;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: var(--text) 2px solid;
+}
+
+.header > h1 {
+    flex-shrink: 0;
+    max-width: 66%;
+    width: min-content;
+    padding: 1rem;
+    text-align: right;
+}
+
+.header > .img-desc {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: var(--text) 2px solid;
+}
+
+.header > .img-desc > .img {
+    flex-grow: 1;
+    background-position: center;
+    background-size: cover;
+    border-bottom: var(--text) 2px solid;
+}
+
+.header > .img-desc > .description {
+    flex-shrink: 0;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.header > .img-desc > .description > .desc {
+    text-overflow: ellipsis;
+    hyphens: auto;
+    word-break: normal;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.header > .img-desc > .description > .date {
+    flex-shrink: 0;
+}
+
+article {
+    padding: 2rem 25%;
+}
+
+article p {
+    margin-bottom: 1rem;
+}
+
+article h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+article h1:not(:first-child) {
+    margin-top: 4rem;
+}
+
+article h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+article h2:not(:first-child) {
+    margin-top: 2rem;
+}
+
+article img {
+    display: block;
+    width: 75%;
+    margin: 1rem auto;
+}
