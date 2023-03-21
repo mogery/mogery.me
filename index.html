@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mogery</title>
+
+    <style>@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 18px;
+    --bg: #fff5f0;
+    --text: black;
+    --blue: #3355ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: black;
+        --text: white;
+    }
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Golos Text', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    border-collapse: collapse;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+img {
+    user-select: none;
+}
+
+p {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+.display {
+    font-family: 'Unbounded', sans-serif;
+}
+
+.font-black { font-weight: 900; }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+a {
+    color: var(--text);
+}
+
+#navbar {
+    width: 100%;
+    padding: 0.5rem;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: var(--bg);
+    border-bottom: var(--text) 2px solid;
+}
+
+#navbar a {
+    text-decoration: none;
+    padding: 0.175rem 0.5rem calc(0.175rem + 2px);
+
+    transition-property: color background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+#navbar > a:first-of-type {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-bottom: 0.175rem;
+}
+
+#navbar a:hover, #navbar a.selected {
+    background-color: var(--text);
+    color: var(--bg);
+}
+
+.flash {
+    width: 100%;
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    user-select: none;
+    background-color: var(--blue);
+    color: white;
+    border-bottom: var(--text) 2px solid;
+    text-align: center;
+}
+
+.scrollmark {
+    position: relative;
+    top: -49.281px;
+}
+
+.section {
+    display: block;
+    text-decoration: none;
+    min-width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    user-select: none;
+    overflow: hidden;
+}
+
+.section.blue {
+    background-color: var(--blue);
+    color: white;
+}
+
+.scrollsec {
+    width: 200%;
+    padding: 0.25rem 0;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 1.5rem;
+    border-bottom: black 2px solid;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+
+    animation: 15s scroll linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}</style>
+    <style>#hero {
+    width: 100%;
+
+    display: flex;
+
+    border-bottom: var(--text) 2px solid;
+}
+
+#hero > div {
+    flex-grow: 1;
+    padding: 1rem;
+}
+
+#hero > img {
+    flex-shrink: 0;
+
+    border-left: var(--text) 2px solid;
+}
+
+@media (max-width: 767px) {
+    #hero > div {
+        border-bottom: var(--text) 2px solid;
+    }
+
+    #hero > img {
+        border-left: none;
+    }
+
+    #hero {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 768px) {
+    #hero {
+        height: 16rem;
+    }
+}
+</style>
+    <style>.blog {
+    width: 100%;
+    display: flex;
+}
+
+.blog.blog-grid {
+    display: grid;
+}
+
+.blog > .post {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+    text-decoration: none;
+    border-bottom: 2px var(--text) solid;
+    border-right: 2px var(--text) solid;
+}
+
+.blog > .noposts {
+    display: flex;
+    position: relative;
+
+    justify-content: space-between;
+    align-items: center;
+
+    flex: 1;
+    border-bottom: 2px var(--text) solid;
+}
+
+.blog > .noposts > span {
+    background: var(--bg);
+    z-index: 1;
+}
+
+.blog > .noposts > span:first-of-type {
+    padding-left: 1rem;
+}
+
+.blog > .noposts > span:last-of-type {
+    padding-right: 1rem;
+}
+
+.blog > .noposts > .dotline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    user-select: none;
+}
+
+@media (max-width: 767px) {
+    .blog > *:nth-child(1n+2) {
+        display: none;
+    }
+
+    .blog > *:nth-child(1) {
+        border-right: none;
+    }
+
+    .blog.blog-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1023px) {
+    .blog > *:nth-child(1n+3) {
+        display: none;
+    }
+
+    .blog > *:nth-child(2) {
+        border-right: none;
+    }
+
+    .blog.blog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1279px) {
+    .blog > *:nth-child(1n+4) {
+        display: none;
+    }
+
+    .blog > *:nth-child(3) {
+        border-right: none;
+    }
+
+    .blog.blog-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1535px) {
+    .blog > *:nth-child(1n+5) {
+        display: none;
+    }
+
+    .blog > *:nth-child(4) {
+        border-right: none;
+    }
+
+    .blog.blog-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1536px) {
+    .blog > *:nth-child(1n+6) {
+        display: none;
+    }
+
+    .blog > *:nth-child(5) {
+        border-right: none;
+    }
+
+    .blog.blog-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+.blog > .post > .img {
+    width: 100%;
+    height: 12rem;
+
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: saturation;
+
+    transition-property: background-blend-mode;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    
+    border-bottom: 2px var(--text) solid;
+}
+
+.blog > .post:hover > .img {
+    background-blend-mode: lighten;
+}
+
+.blog > .post > .snippet {
+    flex-grow: 1;
+    padding: 1rem;
+
+    transition-property: color, background-color, filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.blog > .post:hover > .snippet {
+    background-color: black;
+    color: white;
+}
+
+.blog > .post > .snippet > h3 {
+    font-family: 'Unbounded';
+}
+
+.blog > .post > .snippet > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+</style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#" class="selected">mogery</span>
+        <a href="/blog">blog</a>
+    </nav>
+
+    <div id="hero">
+        <div>
+            <p>Hi! I'm Gergő.</p>
+            <p>
+                I'm a <span id="age"><noscript>17</noscript></span>-year-old programmer, designer, musician, and content creator from Hungary.
+                <span id="birthday" style="display: none; color: #ee0000;">It's my birthday!</span>
+            </p>
+            <p>This site is a work-in-progress. Check back later for more stuff!</p>
+        </div>
+        <img src="/hero.jpg">
+    </div>
+
+    <div class="scrollmark" id="blog"></div>
+
+    <a href="/blog" class="section blue">
+        <span>Blog</span>
+    </a>
+
+    <div class="blog">
+            <a class="post" href="/blog/rcs-is-stupid">
+                <div class="img" style="background-image: linear-gradient(black, black), url(https://images.unsplash.com/photo-1511233744044-194342066754);"></div>
+                <div class="snippet">
+                    <h3>I hope Apple never adopts RCS</h3>
+                    <div>
+                        <span>2022.03.13.</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+            <a class="post" href="/blog/programmer-guide">
+                <div class="img" style="background-image: linear-gradient(black, black), url(https://images.unsplash.com/photo-1550745165-9bc0b252726f);"></div>
+                <div class="snippet">
+                    <h3>mogery&#x27;s Guide to Becoming a Programmer</h3>
+                    <div>
+                        <span>2022.03.13.</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        <div class="noposts">
+            <span>that's all</span>
+            <span>for now</span>
+            <div class="dotline" aria-hidden="true">.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................</div>
+        </div>
+    </div>
+
+    <script>const now = new Date();
+
+document.getElementById("age").innerText = Math.floor((now.valueOf() - new Date(2005, 9, 7).valueOf()) / 31556926000);
+document.getElementById("birthday").style.display = (now.getMonth() === 9 && now.getDate() === 7) ? "inline" : "none";
+</script>
+    <script>function generateSections() {
+    [...document.getElementsByClassName("section")].map(x => {
+        const children = [...x.children];
+        if (children.length !== 1) return;
+
+        const textElem = [...x.children][0];
+
+        if (![...x.children].find(x => x.classList.contains("scrollsec"))) {
+            for (let i = 0; i < 2; i++) {
+                const scroll = document.createElement("div");
+                scroll.className = "scrollsec";
+                scroll.ariaHidden = "true";
+                scroll.appendChild(textElem.cloneNode(true));
+                x.appendChild(scroll);
+            }
+        }
+
+        textElem.classList.add("sr-only");
+    });
+
+    [...document.getElementsByClassName("scrollsec")].map(x => {
+        [...x.children].forEach(x => {
+            if (x.classList.contains("clone")) {
+                x.remove();
+            }
+        })
+    
+        const textElem = [...x.children][0];
+        const idealCount = Math.floor(x.clientWidth / (textElem.clientWidth + 16));
+    
+        for (let i = 1; i < idealCount; i++) {
+            const n = textElem.cloneNode(true);
+            n.classList.add("clone");
+            x.appendChild(n);
+        }
+    });
+}
+
+window.addEventListener("resize", generateSections);
+generateSections();
+</script>
+</body>
+</html>

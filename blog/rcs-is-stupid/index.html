@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mogery</title>
+
+    <style>@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 18px;
+    --bg: #fff5f0;
+    --text: black;
+    --blue: #3355ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: black;
+        --text: white;
+    }
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Golos Text', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    border-collapse: collapse;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+img {
+    user-select: none;
+}
+
+p {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+.display {
+    font-family: 'Unbounded', sans-serif;
+}
+
+.font-black { font-weight: 900; }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+a {
+    color: var(--text);
+}
+
+#navbar {
+    width: 100%;
+    padding: 0.5rem;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: var(--bg);
+    border-bottom: var(--text) 2px solid;
+}
+
+#navbar a {
+    text-decoration: none;
+    padding: 0.175rem 0.5rem calc(0.175rem + 2px);
+
+    transition-property: color background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+#navbar > a:first-of-type {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-bottom: 0.175rem;
+}
+
+#navbar a:hover, #navbar a.selected {
+    background-color: var(--text);
+    color: var(--bg);
+}
+
+.flash {
+    width: 100%;
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    user-select: none;
+    background-color: var(--blue);
+    color: white;
+    border-bottom: var(--text) 2px solid;
+    text-align: center;
+}
+
+.scrollmark {
+    position: relative;
+    top: -49.281px;
+}
+
+.section {
+    display: block;
+    text-decoration: none;
+    min-width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    user-select: none;
+    overflow: hidden;
+}
+
+.section.blue {
+    background-color: var(--blue);
+    color: white;
+}
+
+.scrollsec {
+    width: 200%;
+    padding: 0.25rem 0;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 1.5rem;
+    border-bottom: black 2px solid;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+
+    animation: 15s scroll linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}</style>
+    <style>.header h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-variation-settings: "wdth" 125;
+    font-size: 5.625vw;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: var(--text) 2px solid;
+}
+
+.header > h1 {
+    flex-shrink: 0;
+    max-width: 66%;
+    width: min-content;
+    padding: 1rem;
+    text-align: right;
+}
+
+.header > .img-desc {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: var(--text) 2px solid;
+}
+
+.header > .img-desc > .img {
+    flex-grow: 1;
+    background-position: center;
+    background-size: cover;
+    border-bottom: var(--text) 2px solid;
+}
+
+.header > .img-desc > .description {
+    flex-shrink: 0;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.header > .img-desc > .description > .desc {
+    text-overflow: ellipsis;
+    hyphens: auto;
+    word-break: normal;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.header > .img-desc > .description > .date {
+    flex-shrink: 0;
+}
+
+article {
+    padding: 2rem 25%;
+}
+
+article p {
+    margin-bottom: 1rem;
+}
+
+article h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+article h1:not(:first-child) {
+    margin-top: 4rem;
+}
+
+article h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+article h2:not(:first-child) {
+    margin-top: 2rem;
+}
+
+article img {
+    display: block;
+    width: 75%;
+    margin: 1rem auto;
+}</style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="/">mogery</span>
+        <a href="/#blog">blog</a>
+    </nav>
+
+    <div class="header">
+        <div class="img-desc">
+            <div class="img" style="background-image: url(https://images.unsplash.com/photo-1511233744044-194342066754)"></div>
+            <div class="description">
+                <span class="desc">RCS embraces the flaws of GSM, and Apple using it would be a step backwards.</span>
+                <span class="date">2022.08.23.</span>
+            </div>
+        </div>
+        <h1>I hope Apple never adopts RCS</h1>
+    </div>
+
+    <article>
+        <p>If you&#39;ve only read a little bit about RCS, or even if you took a couple minutes and read <a href="https://www.android.com/get-the-message/">Android&#39;s site about #GettheMessage</a>, it might seem like a great thing: the standard that has finally come to kill the green bubble. However, while that site is great at listing all the problems we have without RCS, it doesn&#39;t really mention the problems we would have <em>with</em> RCS. Here are some things that iMessage does right, and RCS doesn&#39;t.</p>
+<h2 id="philosophy">Philosophy</h2>
+<p>When I think about RCS&#39;s philosophy, the first thing that comes to mind is the lack of it. It wasn&#39;t designed for use by a human, it was a checklist of features, tacked together. It reeks of &quot;oh, this chat app can do this, let&#39;s just plop it on top of the pile of ideas!&quot; It lacks cohesiveness.</p>
+<h2 id="adoption">Adoption</h2>
+<p>When iMessage landed, all you needed to do is update your phone, sign in with your Apple ID, and boom: you could use it instantly. Since RCS relies on <a href="https://en.wikipedia.org/wiki/IP_Multimedia_Subsystem">IMS</a>, and needs to be supported and enabled on a per-carrier basis, adoption of new features could take years. RCS isn&#39;t even supported on every major carrier yet.</p>
+<h2 id="security">Security</h2>
+<p>iMessage uses end-to-end encryption, and Apple has, on multiple occasions, refused to add a backdoor to its systems. RCS not only lacks support for end-to-end encryption by default (although Google has extended the specification to add <em>some</em> support for it), it is also a service of carriers, and is therefore subject to lawful interception with a court order.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To use iMessage, all you need is an Apple ID, which you can create for free. To use RCS, you <em>need</em> to have a phone number, which means that you need to have an account with a carrier. You also need to have a phone to use RCS: you can&#39;t use it on a tablet alone without LTE.</p>
+<h1 id="i-hope-apple-adopts-something-else">I hope Apple adopts something else</h1>
+<p>While iMessage is quite superior to RCS, it is still flawed. It&#39;s major flaw is that it&#39;s an obtuse, closed system. Which, to be fair, could very much be said about RCS also, which is supposed to be open. For example, here&#39;s what you get when you search for the <a href="https://en.wikipedia.org/wiki/Matrix_(protocol)">Matrix</a> protocol:
+<img src="/blog/rcs-is-stupid/images/matrix-search.png" alt="Google search for &quot;matrix protocol&quot;. The first result points to Matrix.org, the official site for Matrix, and one of the hotlinks is the Matrix Specification.">
+Super easy to find. The document is not shown, but it is super easy to understand as well.</p>
+<p>Here&#39;s what happens if you Google &quot;RCS protocol&quot;:
+<img src="/blog/rcs-is-stupid/images/rcs-search.png" alt="Google search for &quot;RCS protocol&quot;. First result is a blog post explaining what RCS is, second is a Wikipedia article about RCS.">
+Specs are nowhere to be found.</p>
+<p>RCS failing SEO is probably fine: you can&#39;t judge how good a protocol is by how easy it is to Google for its specification. However, not once during the research for this article have I been able to find a comprehensive RCS specification. The best thing I&#39;ve been able to find is the <a href="https://www.gsma.com/futurenetworks/wp-content/uploads/2019/10/RCC.07-v11.0.pdf"><code>RCC.07-v11.0.pdf</code></a>, but it is quite silly that this PDF needs 389 pages to describe a protocol that only has about twice the functionality (if not less) as Matrix for the end user, which has a spec just 8 pages long.</p>
+<p>Anyways, back to the point: iMessage is a closed and obtuse system. Sure, having a closed and obtuse system is great when you want to build a closed and obtuse ecosystem, but it also limits the reach and capability of your services. You&#39;re not only giving Android users an f-you when defaulting back to SMS: you&#39;re also giving the same f-you to your own users. Plus, you&#39;re ridding your platform of third-party integrations that&#39;d bring more use to it, like chatbots, and custom clients for power-users.</p>
+<p>I know that Apple and Google probably won&#39;t end up using an off-the-shelf solution like Matrix. (Even though federation would definitely be useful in this scenario as well. Just saying.) However, we know that their engineers are capable of collaboration (see <a href="https://en.wikipedia.org/wiki/Matter_(standard)">Matter</a>). So, instead of Google trying (and failing) to force a new-yet-obsolete technology down Apple&#39;s throat, I hope they try and make something better, together. (And hopefully without the GSMA involved this time. Shoo.)</p>
+
+    </article>
+</body>
+</html>
