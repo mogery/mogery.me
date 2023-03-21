@@ -101,7 +101,7 @@ a {
     padding-bottom: 0.175rem;
 }
 
-#navbar a:hover {
+#navbar a:hover, #navbar a.selected {
     background-color: var(--text);
     color: var(--bg);
 }
@@ -125,4 +125,46 @@ a {
 .scrollmark {
     position: relative;
     top: -49.281px;
+}
+
+.section {
+    display: block;
+    text-decoration: none;
+    min-width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    user-select: none;
+    overflow: hidden;
+}
+
+.section.blue {
+    background-color: var(--blue);
+    color: white;
+}
+
+.scrollsec {
+    width: 200%;
+    padding: 0.25rem 0;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 1.5rem;
+    border-bottom: black 2px solid;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+
+    animation: 15s scroll linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
 }

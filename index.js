@@ -109,6 +109,8 @@ if (!fs.existsSync(path.join(distDir, "blog"))) {
     fs.mkdirSync(path.join(distDir, "blog"));
 }
 
+fs.writeFileSync(path.join(distDir, "blog", "index.html"), generateHTML("blog.html"));
+
 for (const post of blogPosts) {
     if (!fs.existsSync(path.join(distDir, "blog", post.urlname))) {
         fs.mkdirSync(path.join(distDir, "blog", post.urlname));

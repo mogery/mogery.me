@@ -8,27 +8,29 @@
 
     {{{ resource "global.css" }}}
     {{{ resource "index.css" }}}
+    {{{ resource "elem-blog.css" }}}
 </head>
 <body>
-    <a href="#" class="flash">
+    {{!-- <a href="#" class="flash">
         <span>
             <span class="display font-black">NEW POST:</span>&nbsp;
             My chat app is technically a videogame?!
         </span>
-    </a>
+    </a> --}}
 
     <nav id="navbar">
-        <a href="#top">mogery</span>
-        <a href="/#blog">blog</a>
+        <a href="#" class="selected">mogery</span>
+        <a href="/blog">blog</a>
     </nav>
 
     <div id="hero">
         <div>
             <p>Hi! I'm Gergő.</p>
             <p>
-                I'm a <span id="age"></span>-year-old programmer, designer, musician, and content creator from Hungary.
+                I'm a <span id="age"><noscript>17</noscript></span>-year-old programmer, designer, musician, and content creator from Hungary.
                 <span id="birthday" style="display: none; color: #ee0000;">It's my birthday!</span>
             </p>
+            <p>This site is a work-in-progress. Check back later for more stuff!</p>
         </div>
         <img src="/hero.jpg">
     </div>
@@ -63,5 +65,6 @@
     </div>
 
     {{{ resource "index.js" }}}
+    {{{ resource "global.js" }}}
 </body>
 </html>
