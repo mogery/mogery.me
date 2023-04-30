@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mogery</title>
+
+    <style>@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 18px;
+    --bg: #fff5f0;
+    --text: black;
+    --blue: #3355ff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: black;
+        --text: white;
+    }
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Golos Text', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    border-collapse: collapse;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+img {
+    user-select: none;
+}
+
+p {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+.display {
+    font-family: 'Unbounded', sans-serif;
+}
+
+.font-black { font-weight: 900; }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+a {
+    color: var(--text);
+}
+
+#navbar {
+    width: 100%;
+    padding: 0.5rem;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: var(--bg);
+    border-bottom: var(--text) 2px solid;
+}
+
+#navbar a {
+    text-decoration: none;
+    padding: 0.175rem 0.5rem calc(0.175rem + 2px);
+
+    transition-property: color background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+#navbar > a:first-of-type {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-bottom: 0.175rem;
+}
+
+#navbar a:hover, #navbar a.selected {
+    background-color: var(--text);
+    color: var(--bg);
+}
+
+.flash {
+    width: 100%;
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    user-select: none;
+    background-color: var(--blue);
+    color: white;
+    border-bottom: var(--text) 2px solid;
+    text-align: center;
+}
+
+.scrollmark {
+    position: relative;
+    top: -49.281px;
+}
+
+.section {
+    display: block;
+    text-decoration: none;
+    min-width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    user-select: none;
+    overflow: hidden;
+}
+
+.section.blue {
+    background-color: var(--blue);
+    color: white;
+}
+
+.scrollsec {
+    width: 200%;
+    padding: 0.25rem 0;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 1.5rem;
+    border-bottom: black 2px solid;
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+
+    animation: 15s scroll linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}</style>
+    <style>.header h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-variation-settings: "wdth" 125;
+    font-size: 5.625vw;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    border-bottom: var(--text) 2px solid;
+}
+
+.header > h1 {
+    flex-shrink: 0;
+    max-width: 66%;
+    width: min-content;
+    padding: 1rem;
+    text-align: right;
+}
+
+.header > .img-desc {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    border-left: var(--text) 2px solid;
+}
+
+.header > .img-desc > .img {
+    flex-grow: 1;
+    background-position: center;
+    background-size: cover;
+    border-bottom: var(--text) 2px solid;
+}
+
+.header > .img-desc > .description {
+    flex-shrink: 0;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.header > .img-desc > .description > .desc {
+    text-overflow: ellipsis;
+    hyphens: auto;
+    word-break: normal;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.header > .img-desc > .description > .date {
+    flex-shrink: 0;
+}
+
+article {
+    padding: 2rem 25%;
+}
+
+article p {
+    margin-bottom: 1rem;
+}
+
+article h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+article h1:not(:first-child) {
+    margin-top: 4rem;
+}
+
+article h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+article h2:not(:first-child) {
+    margin-top: 2rem;
+}
+
+article img {
+    display: block;
+    width: 75%;
+    margin: 1rem auto;
+}</style>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="/">mogery</span>
+        <a href="/#blog">blog</a>
+    </nav>
+
+    <div class="header">
+        <div class="img-desc">
+            <div class="img" style="background-image: url(https://images.unsplash.com/photo-1625296276397-3bc8839c688f)"></div>
+            <div class="description">
+                <span class="desc">The dark art of building WordPress themes just got a lot darker.</span>
+                <span class="date">2023.04.30.</span>
+            </div>
+        </div>
+        <h1>WordPress Rant #001</h1>
+    </div>
+
+    <article>
+        <p><em>deep breath</em></p>
+<p>So, WordPress is having a bit of an identity crisis with it&#39;s theming support.</p>
+<p>There are two types of themes: </p>
+<ul>
+<li>Good old &quot;classic themes&quot;. Written in PHP, and customized by the Customizer, which only supports options specifically declared by the theme.</li>
+<li>The new &quot;block themes&quot;. These are written in pure HTML and comment markup. They are fully editable in the new WYSIWYG theme editor, and you can reuse blocks from the theme in your own pages, posts, etc.</li>
+</ul>
+<p>Now, having two theming options is not a problem. The interop is actually pretty nice: you can render posts that use blocks from classic themes, and you can also expose your own blocks from classic themes, which can also use PHP. The issue mainly manifests in two parts: syntax design, and documentation.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>The block theme syntax seems fine at first glance. The introduction shows this snippet which prints the site&#39;s title as an <code>&lt;h1&gt;</code>:</p>
+<pre><code class="language-html">&lt;!-- wp:site-title /--&gt;
+</code></pre>
+<p>This seems fine! However, that&#39;s because this is a self-contained block. When you actually want to make something with structure, you end up writing shit like this:</p>
+<pre><code class="language-html">&lt;!-- wp:group {&quot;align&quot;:&quot;full&quot;, &quot;layout&quot;: {&quot;type&quot;:&quot;flex&quot;,&quot;allowOrientation&quot;:false,&quot;justifyContent&quot;:&quot;space-between&quot;}, &quot;className&quot;: &quot;my-class&quot;} --&gt;
+&lt;div class=&quot;wp-block-group alignfull is-layout-flex is-content-justification-space-between my-class&quot;&gt;
+    &lt;!-- wp:paragraph --&gt;
+    &lt;p&gt;This is on the left&lt;/p&gt;
+    &lt;!-- /wp:paragraph --&gt;
+
+    &lt;!-- wp:paragraph --&gt;
+    &lt;p&gt;This is on the right&lt;/p&gt;
+    &lt;!-- /wp:paragraph --&gt;
+&lt;/div&gt;
+&lt;!-- /wp:group --&gt;
+</code></pre>
+<p>Now, this is disgusting for a lot of reasons.</p>
+<ol>
+<li>You have to declare everything twice, in two different ways. Once in the comment, written in the comment declaration format, and once in HTML, using the built-in classes.</li>
+<li>The comment declaration format is essentially undocumented. This <a href="https://developer.wordpress.org/block-editor/reference-guides/core-blocks/">reference page</a> exists, but whoever called it a refrence should be fined for false advertisement. What the fuck does <code>Supports: align, anchor, color (background, text)...</code> even mean? What are possible values for <code>align</code>?</li>
+<li>The built-in classes are named completely inexpicably. <code>&quot;layout&quot;: {&quot;type&quot;: &quot;flex&quot;}</code> needs the class <code>is-layout-flex</code>. So, by that logic, <code>&quot;align&quot;: &quot;full&quot;</code> would need <code>is-align-full</code>, right? Nope! It needs <code>alignfull</code>!</li>
+<li>The built-in classes are <strong>completely</strong> undocumented. It is by pure chance that I found <code>alignfull</code> while scouring through examples, and I only found the classes for flex stuff in a <a href="https://developer.wordpress.org/news/2023/01/a-walk-through-of-layout-classes-in-wordpress-6-1/">blog post</a>.</li>
+<li><code>&quot;layout&quot;</code> is also <strong>COMPLETELY UNDOCUMENTED</strong>. I had to dig through WP source code to find even simple stuff like <code>&quot;flexWrap&quot;: &quot;nowrap&quot;</code> (because <code>wrap</code> is the default, for some reason).</li>
+<li>Apparently, the proper way to write block themes is by designing them in the WYSIWYG editor. How is that appropriate at all? Who thought that was a good idea? Did they forget about people working from Figma designs? WTF?!?!?!?!?</li>
+<li>Even if you tried to use the WYSIWYG editor, you&#39;d get a brain aneurysm in mere minutes. The editor is fine for text editing, but once you try to do layouting stuff, you&#39;ll lose your mind. It&#39;s such a terrible experience.</li>
+<li>The worst part of it all: The editor will take the comment declarations you write, generate HTML from it, and match it against the HTML you wrote. If it doesn&#39;t match, it&#39;ll freak out and show a weird Block Recovery thing. <strong>IF YOU CAN GENERATE HTML FROM MY COMMENT DECLARATIONS, WHY DO YOU NEED ME TO ALSO WRITE IT AS HTML. WHAT.</strong></li>
+</ol>
+
+    </article>
+</body>
+</html>
