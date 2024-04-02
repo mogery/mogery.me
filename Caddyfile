@@ -1,0 +1,15 @@
+mogery.me {
+	root * /srv/mogery.me
+	encode gzip
+	file_server
+}
+
+www.mogery.me {
+	redir https://mogery.me{uri}
+}
+
+old.mogery.me {
+	root * /srv/old.mogery.me
+	encode gzip
+	file_server
+}
