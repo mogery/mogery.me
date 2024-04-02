@@ -90,3 +90,8 @@ article img {
     width: 75%;
     margin: 1rem auto;
 }
+
+article pre {
+    width: 100%;
+    overflow-x: auto;
+}

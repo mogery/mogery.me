@@ -1,20 +1,17 @@
-#hero {
+body {
     width: 100%;
-
-    display: flex;
-
-    border-bottom: var(--text) 2px solid;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    gap: 2rem;
+    padding: 4rem 12.5%;
 }
 
-#hero > div {
-    flex-grow: 1;
-    padding: 1rem;
+#meta-bar {
+    padding-top: 16rem;
 }
 
-#hero > img {
-    flex-shrink: 0;
-
-    border-left: var(--text) 2px solid;
+body.has-post #meta-bar {
+    padding-top: 10rem;
 }
 
 @media (max-width: 767px) {

@@ -4,39 +4,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {{#if post}}
+    <title>{{ post.title }} - mogery</title>
+    {{else}}
     <title>mogery</title>
+    {{/if}}
 
     {{{ resource "global.css" }}}
     {{{ resource "index.css" }}}
     {{{ resource "elem-blog.css" }}}
 </head>
+{{#if post}}
+<body class="has-post">
+{{else}}
 <body>
-    {{!-- <a href="#" class="flash">
-        <span>
-            <span class="display font-black">NEW POST:</span>&nbsp;
-            My chat app is technically a videogame?!
-        </span>
-    </a> --}}
-
-    <nav id="navbar">
-        <a href="#" class="selected">mogery</span>
-        <a href="/blog">blog</a>
-    </nav>
-
-    <div id="hero">
-        <div>
-            <p>Hi! I'm Gergő.</p>
-            <p>
-                I'm a <span id="age"><noscript>17</noscript></span>-year-old programmer, designer, musician, and content creator from Hungary.
-                <span id="birthday" style="display: none; color: #ee0000;">It's my birthday!</span>
-            </p>
-            <p>This site is a work-in-progress. Check back later for more stuff!</p>
+{{/if}}
+    <div id="content-bar">
+        {{#if post}}
+        <a href="/">
+        {{/if}}
+        <div id="header">
+            <img src="/pfp.png">
+            <h1 class="display">MOGERY</h1>
         </div>
-        <img src="/hero.jpg">
+        {{#if post}}
+        </a>
+        {{/if}}
+
+        {{#if post}}
+        <article>
+            <header>
+                <div class="headcol">
+                    <p>BLOG</p>
+                    <p>{{ post.date }}</p>
+                </div>
+                <img src="{{ post.image }}">
+                <h1>{{ post.title }}</h1>
+            </header>
+
+            <p>{{ post.description }}</p>
+
+            {{{ post.html }}}
+        </article>
+        {{else}}
+        {{#each blog}}
+        <article>
+            <header>
+                <a href="{{ this.url }}">
+                    <div class="headcol">
+                        <p>BLOG</p>
+                        <p>{{ this.date }}</p>
+                    </div>
+                    <img src="{{ this.image }}">
+                    <h1>{{ this.title }}</h1>
+                </a>
+            </header>
+
+            <p>{{ this.description }}</p>
+        </article>
+        {{/each}}
+        {{/if}}
     </div>
 
-    <div class="scrollmark" id="blog"></div>
+    <div id="meta-bar">
+        <p>Hi! I'm Gergő, aka mogery or mog. (he/they)</p>
+        <p>
+            I'm an <span id="age"><noscript>18</noscript></span>-year-old programmer, designer, musician, and content creator from Hungary.
+            <span id="birthday" style="display: none; color: #ee0000;">It's my birthday!</span>
+        </p>
+        <p> <a target="_blank" href="https://youtube.com/@mogeryy">YouTube</a> |
+            <a target="_blank" href="https://social.treehouse.systems/@mogery">Mastodon</a> |
+            <a target="_blank" href="https://cohost.org/mog">Cohost</a></p>
+    </div>
 
+    <!--
     <a href="/blog" class="section blue">
         <span>Blog</span>
     </a>
@@ -64,7 +106,8 @@
         </div>
     </div>
 
-    {{{ resource "index.js" }}}
-    {{{ resource "global.js" }}}
+    
+     -->
+     {{{ resource "global.js" }}}
 </body>
 </html>

@@ -21,7 +21,7 @@
 html, body {
     margin: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     font-family: 'Golos Text', sans-serif;
     background-color: var(--bg);
     color: var(--text);
@@ -51,6 +51,19 @@ p:last-child {
     font-family: 'Unbounded', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+article a,
+#meta-bar a {
+    text-decoration: underline;
+}
+
+article header a {
+    text-decoration: none;
+}
+
 .font-black { font-weight: 900; }
 
 .sr-only {
@@ -69,41 +82,34 @@ a {
     color: var(--text);
 }
 
-#navbar {
-    width: 100%;
-    padding: 0.5rem;
-
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
+#header {
     display: flex;
     align-items: center;
-    gap: 1rem;
-
-    background-color: var(--bg);
-    border-bottom: var(--text) 2px solid;
+    gap: 2rem;
+    padding-bottom: 4rem;
 }
 
-#navbar a {
-    text-decoration: none;
-    padding: 0.175rem 0.5rem calc(0.175rem + 2px);
-
-    transition-property: color background-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+body.has-post #header {
+    padding-bottom: 2rem;
 }
 
-#navbar > a:first-of-type {
-    font-family: "Unbounded", sans-serif;
+#header img {
+    height: 12rem;
+}
+
+body.has-post #header img {
+    height: 8rem;
+}
+
+#header h1 {
     font-weight: 900;
-    text-transform: uppercase;
-    padding-bottom: 0.175rem;
+    font-size: 5rem;
+    line-height: 0;
+    text-decoration: none;
 }
 
-#navbar a:hover, #navbar a.selected {
-    background-color: var(--text);
-    color: var(--bg);
+body.has-post #header h1 {
+    font-size: 3rem;
 }
 
 .flash {
@@ -167,4 +173,80 @@ a {
     to {
         transform: translateX(-100%);
     }
+}
+
+article {
+    /* width: calc(100vw * 0.75 * 0.75 - 1rem); */
+}
+
+body:not(.has-post) article {
+    margin-bottom: 2rem;
+}
+
+article > header {
+    margin-bottom: 1rem;
+}
+
+article > header img {
+    width: 100%;
+    aspect-ratio: 16 / 3;
+    object-fit: cover;
+    object-position: center;
+}
+
+article > header h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    margin-top: 0rem;
+}
+
+article > header .headcol {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+article > header .headcol p:nth-child(1) {
+    margin: 0;
+    font-weight: 900;
+    font-family: 'Unbounded', sans-serif;
+}
+
+article > header .headcol p:nth-child(2) {
+    text-align: right;
+}
+
+article p {
+    margin-bottom: 1rem;
+}
+
+article h1 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    margin-top: 4rem;
+}
+
+article h2 {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+article h2:not(:first-child) {
+    margin-top: 2rem;
+}
+
+article img {
+    display: block;
+    width: 75%;
+    margin: 1rem auto;
+}
+
+article pre {
+    width: 100%;
+    overflow-x: auto;
 }

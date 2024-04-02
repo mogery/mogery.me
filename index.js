@@ -34,15 +34,19 @@ const blogPosts = Object.entries(loadDir(blogDir))
         let title = "Untitled";
         let image = "";
         let description = "";
+        let hidden = false;
 
         content = content.replace(/```(.+?)```/s, (_, x) => {
             const obj = JSON.parse(x);
             title = obj.title || "Untitled";
             image = obj.image || "";
             description = obj.description || "";
+            hidden = obj.hidden || false;
 
             return "";
         });
+
+        if (hidden) return null;
 
         let tok = path.basename(filename, path.extname(filename)).split("-");
         let dateStr = tok[0];
@@ -59,6 +63,7 @@ const blogPosts = Object.entries(loadDir(blogDir))
         
         return {
             urlname,
+            url: `/blog/${urlname}`,
             d: date,
             date: `${date.getFullYear()}.${(date.getMonth() + 1).toString().padStart(2, "0")}.${date.getDate().toString().padStart(2, "0")}.`,
             image,
@@ -67,6 +72,7 @@ const blogPosts = Object.entries(loadDir(blogDir))
             html: marked.parse(content),
         }
     })
+    .filter(x => x !== null)
     .sort((a,b) => b.d - a.d);
 
 console.log(blogPosts);
@@ -79,6 +85,8 @@ function generateResourceHTML(name) {
         return "<style>" + res + "</style>";
     } else if (ext === ".js") {
         return "<script>" + res + "</script>";
+    } else if (ext === ".html") {
+        return res;
     } else {
         throw new Error("Unknown resource extension " + ext + " (" + name + ")");
     }
@@ -89,16 +97,16 @@ Handlebars.registerHelper("json", x => {
     return JSON.stringify(JSON.stringify(x));
 });
 
-function generateHTML(name) {
-    return templates[name]({
+function generateHTML(name, extra = {}) {
+    return templates[name](Object.assign({
         blog: blogPosts,
-    });
+    }, extra));
 }
 
 fs.writeFileSync(path.join(distDir, "index.html"), generateHTML("index.html"));
 
 function generateBlogPost(post) {
-    return templates["blogpost.html"]({
+    return templates["index.html"]({
         post
     });
 }
@@ -109,7 +117,9 @@ if (!fs.existsSync(path.join(distDir, "blog"))) {
     fs.mkdirSync(path.join(distDir, "blog"));
 }
 
-fs.writeFileSync(path.join(distDir, "blog", "index.html"), generateHTML("blog.html"));
+fs.writeFileSync(path.join(distDir, "blog", "index.html"), generateHTML("index.html", {
+    filter: "blog",
+}));
 
 for (const post of blogPosts) {
     if (!fs.existsSync(path.join(distDir, "blog", post.urlname))) {
