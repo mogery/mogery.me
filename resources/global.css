@@ -29,6 +29,22 @@ html, body {
     scroll-behavior: smooth;
 }
 
+body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    gap: 2rem;
+    padding: 4rem 12.5%;
+}
+
+#meta-bar {
+    padding-top: 16rem;
+}
+
+body.has-post #meta-bar {
+    padding-top: 10rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
     font-weight: 400;
@@ -64,20 +80,6 @@ article header a {
     text-decoration: none;
 }
 
-.font-black { font-weight: 900; }
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
 a {
     color: var(--text);
 }
@@ -110,73 +112,6 @@ body.has-post #header img {
 
 body.has-post #header h1 {
     font-size: 3rem;
-}
-
-.flash {
-    width: 100%;
-    padding: 0.5rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-decoration: none;
-    user-select: none;
-    background-color: var(--blue);
-    color: white;
-    border-bottom: var(--text) 2px solid;
-    text-align: center;
-}
-
-.scrollmark {
-    position: relative;
-    top: -49.281px;
-}
-
-.section {
-    display: block;
-    text-decoration: none;
-    min-width: 100%;
-    display: flex;
-    text-transform: uppercase;
-    user-select: none;
-    overflow: hidden;
-}
-
-.section.blue {
-    background-color: var(--blue);
-    color: white;
-}
-
-.scrollsec {
-    width: 200%;
-    padding: 0.25rem 0;
-    flex-shrink: 0;
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    font-size: 1.5rem;
-    border-bottom: black 2px solid;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 900;
-
-    animation: 15s scroll linear infinite;
-}
-
-@keyframes scroll {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-article {
-    /* width: calc(100vw * 0.75 * 0.75 - 1rem); */
 }
 
 body:not(.has-post) article {
@@ -219,6 +154,7 @@ article > header .headcol p:nth-child(2) {
 
 article p {
     margin-bottom: 1rem;
+    text-align: justify;
 }
 
 article h1 {
@@ -249,4 +185,32 @@ article img {
 article pre {
     width: 100%;
     overflow-x: auto;
+}
+
+@media (max-width: 767px) {
+    body {
+        grid-template-columns: 100%;
+        padding: 2rem 1rem;
+    }
+
+    #meta-bar {
+        display: none;
+    }
+
+    #header {
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+
+    #header img {
+        height: 6rem;
+    }
+    
+    #header h1 {
+        display: none;
+    }
+
+    article > header h1 {
+        font-size: 1.75rem;
+    }
 }

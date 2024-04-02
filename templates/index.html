@@ -12,13 +12,11 @@
     {{/if}}
 
     {{{ resource "global.css" }}}
-    {{{ resource "index.css" }}}
-    {{{ resource "elem-blog.css" }}}
 </head>
 {{#if post}}
-<body class="has-post">
+<body lang="en" class="has-post">
 {{else}}
-<body>
+<body lang="en">
 {{/if}}
     <div id="content-bar">
         {{#if post}}
@@ -77,37 +75,6 @@
             <a target="_blank" href="https://social.treehouse.systems/@mogery">Mastodon</a> |
             <a target="_blank" href="https://cohost.org/mog">Cohost</a></p>
     </div>
-
-    <!--
-    <a href="/blog" class="section blue">
-        <span>Blog</span>
-    </a>
-
-    <div class="blog">
-        {{#each blog}}
-            <a class="post" href="/blog/{{ this.urlname }}">
-                <div class="img" style="background-image: linear-gradient(black, black), url({{ this.image }});"></div>
-                <div class="snippet">
-                    <h3>{{this.title}}</h3>
-                    <div>
-                        <span>{{this.date}}</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </div>
-                </div>
-            </a>
-        {{/each}}
-        <div class="noposts">
-            <span>that's all</span>
-            <span>for now</span>
-            <div class="dotline" aria-hidden="true">.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................</div>
-        </div>
-    </div>
-
-    
-     -->
      {{{ resource "global.js" }}}
 </body>
 </html>
