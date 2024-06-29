@@ -88,15 +88,12 @@ a {
     display: flex;
     align-items: center;
     gap: 2rem;
+    height: 12rem;
     padding-bottom: 4rem;
 }
 
 body.has-post #header {
     padding-bottom: 2rem;
-}
-
-#header img {
-    height: 12rem;
 }
 
 body.has-post #header img {
