@@ -198,13 +198,9 @@ article pre {
         justify-content: center;
         padding-bottom: 2rem;
     }
-
-    #header {
-        height: 6rem;
-    }
     
     #header h1 {
-        font-size: 1rem;
+        font-size: 2rem;
     }
 
     article > header h1 {
